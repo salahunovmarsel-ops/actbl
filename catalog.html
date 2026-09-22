@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог партнёров и сервисов — ECOM KG</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="catalog.html">
+<div id="header"></div>
+
+<section class="page-banner"><div class="container">
+  <div class="crumbs"><a href="index.html">Главная</a> / Каталог</div>
+  <h1>Каталог партнёров и сервисов</h1>
+  <p style="color:#cdd8f5;margin:6px 0 0">Маркетплейс услуг для селлеров: логистика, финансы, фулфилмент, обучение и другое.</p>
+</div></section>
+
+<section><div class="container">
+  <div class="pill-row" id="filters" style="margin-bottom:24px">
+    <button class="btn btn-primary btn-sm" data-f="all">Все</button>
+    <button class="btn btn-outline btn-sm" data-f="marketplace">Маркетплейсы</button>
+    <button class="btn btn-outline btn-sm" data-f="logistics">Логистика</button>
+    <button class="btn btn-outline btn-sm" data-f="cargo">Карго</button>
+    <button class="btn btn-outline btn-sm" data-f="post">Почта</button>
+    <button class="btn btn-outline btn-sm" data-f="fulfillment">Фулфилмент</button>
+    <button class="btn btn-outline btn-sm" data-f="finance">Банки и МФО</button>
+    <button class="btn btn-outline btn-sm" data-f="analytics">Аналитика</button>
+    <button class="btn btn-outline btn-sm" data-f="edu">Обучение</button>
+    <button class="btn btn-outline btn-sm" data-f="cert">Сертификация</button>
+    <button class="btn btn-outline btn-sm" data-f="legal">Юр./Бухгалтерия</button>
+    <button class="btn btn-outline btn-sm" data-f="it">IT / AI</button>
+  </div>
+
+  <div class="grid g3" id="cards">
+    <!-- Карточки партнёров -->
+    <div class="card" data-cat="marketplace"><div class="ico">🛒</div><h3>Wildberries</h3><p class="muted">Крупнейший маркетплейс. Обучение и поддержка выхода.</p><div><span class="tag">Скидка членам 10%</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="marketplace"><div class="ico">🛒</div><h3>Ozon</h3><p class="muted">Выход на площадку, аналитика продаж.</p><div><span class="tag">★ 4.8</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="marketplace"><div class="ico">🛒</div><h3>Kaspi / Uzum</h3><p class="muted">Региональные маркетплейсы Центральной Азии.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="logistics"><div class="ico">🚚</div><h3>СДЭК</h3><p class="muted">Доставка по КР и трансграничная логистика.</p><div><span class="tag">Тариф для членов</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="logistics"><div class="ico">🚚</div><h3>Ылдам Экспресс</h3><p class="muted">Экспресс-доставка и логистика.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="post"><div class="ico">📮</div><h3>Кыргыз почтасы</h3><p class="muted">Национальный почтовый оператор.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="cargo"><div class="ico">📦</div><h3>Альфа Карго</h3><p class="muted">Карго-доставка из Китая.</p><div><span class="tag">Скидка членам</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="cargo"><div class="ico">📦</div><h3>Рэд Экспресс</h3><p class="muted">Карго и таможенное оформление.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="fulfillment"><div class="ico">🏭</div><h3>Фулфилмент-центр</h3><p class="muted">Хранение, упаковка, отгрузка на маркетплейсы.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="finance"><div class="ico">🏦</div><h3>Элдик Банк</h3><p class="muted">Расчётные счета и кредиты для селлеров.</p><div><span class="tag">Льготные условия</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="finance"><div class="ico">💰</div><h3>Микрофинансовые организации</h3><p class="muted">Оборотное финансирование, факторинг.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="analytics"><div class="ico">📊</div><h3>MarketGuru / Wildbox</h3><p class="muted">Аналитика ниш и конкурентов.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="edu"><div class="ico">🎓</div><h3>Образовательные сервисы</h3><p class="muted">Курсы и интенсивы для селлеров.</p><a href="education.html" class="btn btn-primary btn-sm">Перейти</a></div>
+    <div class="card" data-cat="cert"><div class="ico">📜</div><h3>Центр сертификации</h3><p class="muted">Сертификаты и декларации соответствия.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="legal"><div class="ico">⚖️</div><h3>Юр. и бухгалтерия</h3><p class="muted">Регистрация, договоры, налоги.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+    <div class="card" data-cat="it"><div class="ico">🤖</div><h3>IT и AI-инструменты</h3><p class="muted">Автоматизация, боты, AI для бизнеса.</p><a href="#" class="btn btn-primary btn-sm" data-req>Оставить заявку</a></div>
+  </div>
+</div></section>
+
+<div id="footer"></div>
+<script src="js/main.js"></script>
+<script>
+document.getElementById('filters').addEventListener('click',function(e){
+  var b=e.target.closest('[data-f]'); if(!b) return;
+  document.querySelectorAll('#filters button').forEach(function(x){x.className='btn btn-outline btn-sm';});
+  b.className='btn btn-primary btn-sm';
+  var f=b.getAttribute('data-f');
+  document.querySelectorAll('#cards .card').forEach(function(c){
+    c.style.display=(f==='all'||c.getAttribute('data-cat')===f)?'':'none';
+  });
+});
+</script>
+</body>
+</html>

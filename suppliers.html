@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поставщики и товары — ECOM KG</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="suppliers.html">
+<div id="header"></div>
+
+<section class="page-banner"><div class="container">
+  <div class="crumbs"><a href="index.html">Главная</a> / Поставщики</div>
+  <h1>Поставщики и товары</h1>
+  <p style="color:#cdd8f5;margin:6px 0 0">Каталог партнёрских поставщиков и производителей.</p>
+</div></section>
+
+<section><div class="container">
+  <div class="grid g4" style="align-items:end;margin-bottom:24px">
+    <div class="field mb0"><label>Категория</label><select><option>Все категории</option><option>Одежда</option><option>Электроника</option><option>Товары для дома</option><option>Продукты</option><option>Косметика</option></select></div>
+    <div class="field mb0"><label>Страна производства</label><select><option>Любая</option><option>Кыргызстан</option><option>Китай</option><option>Турция</option><option>Казахстан</option></select></div>
+    <div class="field mb0"><label>Минимальный заказ</label><select><option>Любой</option><option>до 10 000 сом</option><option>до 50 000 сом</option><option>от 50 000 сом</option></select></div>
+    <div class="field mb0"><button class="btn btn-primary" style="width:100%">Найти</button></div>
+  </div>
+
+  <div class="grid g3">
+    <div class="card"><div class="ico">🧵</div><h3>Текстиль КР</h3><p class="muted">Одежда · Кыргызстан · мин. заказ 10 000 сом</p><div><span class="tag">Производитель</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card"><div class="ico">📱</div><h3>Электроника (Китай)</h3><p class="muted">Гаджеты · Китай · мин. заказ 50 000 сом</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card"><div class="ico">🏠</div><h3>Товары для дома</h3><p class="muted">Хозтовары · Турция</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card"><div class="ico">💄</div><h3>Косметика</h3><p class="muted">Beauty · Китай / Корея</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card"><div class="ico">🍯</div><h3>Продукты КР</h3><p class="muted">Мёд, сухофрукты · Кыргызстан</p><div><span class="tag">Экспорт</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card"><div class="ico">👟</div><h3>Обувь</h3><p class="muted">Обувь · Китай / КР</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+  </div>
+
+  <div class="notice" style="margin-top:28px">📦 Не нашли нужное? Оставьте <a href="#" data-req>заявку на подбор товара</a> или <a href="#" data-req>запрос на расчёт логистики</a> — партнёры Ассоциации помогут.</div>
+</div></section>
+
+<div id="footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

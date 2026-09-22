@@ -1,0 +1,215 @@
+/* ECOM KG — дизайн-система «Торговый коридор» (направление A)
+   Индиго + тёплая бумага + янтарь + бирюза. Шрифты: Fraunces (заголовки) + Inter (текст). */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --ink:#16233b;        /* глубокий индиго */
+  --ink-2:#20304c;
+  --paper:#f7f2e9;      /* тёплый фон страниц */
+  --card:#fffdf8;       /* фон карточек */
+  --amber:#c8792e;      /* основной акцент */
+  --amber-d:#a9631f;
+  --teal:#2f7d76;       /* второй акцент */
+  --text:#1e2740;
+  --muted:#5f6a7d;
+  --border:#e6ddcd;
+  --border-d:#2c3d5a;   /* граница на тёмном */
+  --radius:12px;
+  --shadow:0 10px 30px rgba(22,35,59,.08);
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;
+  color:var(--text);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--amber-d);text-decoration:none}
+a:hover{color:var(--amber)}
+img{max-width:100%}
+.container{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:64px 0}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;color:var(--text);margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,4.2vw,3.3rem);font-weight:900}
+h2{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:600}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0 0 1em}
+.muted{color:var(--muted)}
+.center{text-align:center}
+
+/* ---------- Header ---------- */
+header.site{position:sticky;top:0;z-index:50;background:rgba(247,242,233,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;gap:20px;height:68px}
+.logo{font-family:Fraunces,serif;font-weight:900;font-size:1.35rem;color:var(--ink);white-space:nowrap;letter-spacing:-.02em}
+.logo span{color:var(--amber)}
+.nav-links{display:flex;gap:14px;margin-left:4px;flex-wrap:wrap}
+.nav-links a{color:var(--text);font-size:.9rem;padding:6px 2px;font-weight:500}
+.nav-links a:hover{color:var(--amber-d)}
+.nav-links a.active{color:var(--amber-d);font-weight:600;box-shadow:inset 0 -2px 0 var(--amber)}
+.nav-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.burger{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+
+/* dropdown «Ещё» */
+.has-drop{position:relative}
+.drop-toggle{color:var(--text);font-size:.9rem;font-weight:500;padding:6px 2px;cursor:pointer;user-select:none}
+.drop-toggle:hover{color:var(--amber-d)}
+.drop-toggle.active{color:var(--amber-d);font-weight:600;box-shadow:inset 0 -2px 0 var(--amber)}
+.drop{position:absolute;top:calc(100% + 10px);left:0;background:var(--paper);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);padding:8px;min-width:200px;display:none;z-index:60}
+.has-drop:hover .drop,.has-drop:focus-within .drop{display:block}
+.drop a{display:block;padding:9px 12px;border-radius:7px;white-space:nowrap;color:var(--text);font-size:.9rem;font-weight:500}
+.drop a:hover{background:#f0e7d6;color:var(--amber-d)}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;border:1px solid transparent;cursor:pointer;font-size:.95rem;font-family:inherit;transition:background .15s,color .15s,border-color .15s;text-align:center}
+.btn:hover{text-decoration:none}
+.btn-primary{background:var(--amber);color:#231404}
+.btn-primary:hover{background:var(--amber-d);color:#fff}
+.btn-accent{background:var(--teal);color:#fff}
+.btn-accent:hover{background:#25655f;color:#fff}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--paper)}
+.btn-sm{padding:9px 15px;font-size:.86rem}
+
+/* ---------- Hero (главная) ---------- */
+.hero{background:var(--ink);color:var(--paper);padding:76px 0 64px;overflow:hidden}
+.hero .kicker{font-family:Fraunces,serif;font-style:italic;font-size:1.05rem;color:var(--amber);margin-bottom:14px}
+.hero h1{color:var(--paper);max-width:16ch;margin-bottom:18px}
+.hero p{color:#dcd3c2;max-width:54ch;font-size:1.12rem}
+.hero .btn-outline{color:var(--paper);border-color:#52617a}
+.hero .btn-outline:hover{background:var(--paper);color:var(--ink)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+
+/* corridor map */
+.corridor{margin-top:52px}
+.corridor svg{width:100%;height:auto;display:block}
+.corridor-nodes{display:flex;justify-content:space-between;margin-top:14px;gap:8px;font-size:.78rem;color:#a9b4c6}
+.corridor-nodes b{display:block;color:var(--paper);font-family:Fraunces,serif;font-weight:600;font-size:.98rem}
+
+/* ---------- Stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;border-top:1px solid var(--border-d)}
+.stat{padding:24px 20px 4px 0}
+.stat b{display:block;font-family:Fraunces,serif;font-size:2.3rem;font-weight:600;color:var(--amber);line-height:1}
+.stat span{color:#c3ccdb;font-size:.9rem}
+
+/* ---------- Section head ---------- */
+.sec-head{max-width:760px;margin:0 auto 38px;text-align:center}
+.sec-head p{color:var(--muted)}
+
+/* ---------- Grid & cards ---------- */
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:#d8c9a8}
+.card h3{margin-top:2px}
+.card .ico{font-size:1.7rem;margin-bottom:10px;line-height:1}
+.tag{display:inline-block;background:#efe7d6;color:var(--amber-d);padding:4px 11px;border-radius:6px;font-size:.78rem;font-weight:600;margin:0 6px 6px 0}
+.badge{display:inline-block;background:var(--teal);color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;letter-spacing:.01em}
+
+/* ---------- Lists ---------- */
+.checks{list-style:none;padding:0;margin:0 0 1em}
+.checks li{padding:9px 0 9px 30px;position:relative}
+.checks li:before{content:"";position:absolute;left:2px;top:16px;width:12px;height:2px;background:var(--amber)}
+
+/* ---------- Pricing ---------- */
+.price{font-family:Fraunces,serif;font-size:2rem;font-weight:600;color:var(--ink);margin:.2em 0 .4em}
+.price small{font-family:Inter;font-size:.85rem;color:var(--muted);font-weight:500}
+
+/* ---------- Page banner (внутренние) ---------- */
+.page-banner{background:var(--ink);color:var(--paper);padding:52px 0}
+.page-banner h1{color:var(--paper);margin:0}
+.page-banner p{color:#c3ccdb;margin:10px 0 0;max-width:60ch}
+.crumbs{color:#93a0b8;font-size:.85rem;margin-bottom:12px}
+.crumbs a{color:var(--amber)}
+.crumbs a:hover{color:#e0913f}
+
+/* ---------- Forms ---------- */
+.form{max-width:560px}
+.form h2{margin-bottom:.6em}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:600;margin-bottom:6px;font-size:.9rem}
+.field input,.field select,.field textarea{
+  width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:8px;font-size:.95rem;font-family:inherit;background:#fff;color:var(--text)
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--amber);border-color:transparent}
+.check-row{display:flex;gap:9px;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+.check-row input{width:auto;margin-top:4px}
+
+/* ---------- Dashboard ---------- */
+.dash{display:grid;grid-template-columns:240px 1fr;gap:24px}
+.dash-menu{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:10px;height:fit-content}
+.dash-menu a{display:block;padding:11px 13px;border-radius:8px;color:var(--text);font-size:.92rem;font-weight:500}
+.dash-menu a:hover,.dash-menu a.active{background:#f0e7d6;color:var(--amber-d)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi .card{padding:18px}
+.kpi b{font-family:Fraunces,serif;font-size:1.7rem;color:var(--ink)}
+
+/* ---------- Table ---------- */
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--border);font-size:.9rem}
+tr:last-child td{border-bottom:0}
+th{background:#f0e7d6;font-weight:700;color:var(--ink)}
+.status{padding:4px 10px;border-radius:6px;font-size:.76rem;font-weight:700}
+.st-ok{background:#e0f0ec;color:#1f6b60}
+.st-wait{background:#f7ecd6;color:#9a6a1a}
+.st-new{background:#e6ecf7;color:#33507e}
+
+/* ---------- Footer ---------- */
+footer.site{background:var(--ink);color:#c3ccdb;padding:52px 0 24px;margin-top:0}
+footer.site h4{color:var(--paper);font-family:Fraunces,serif;font-size:1.05rem;margin:0 0 14px}
+footer.site a{color:#c3ccdb;font-size:.9rem;display:block;padding:3px 0}
+footer.site a:hover{color:var(--amber)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:26px;margin-bottom:30px}
+.foot-bottom{border-top:1px solid var(--border-d);padding-top:18px;font-size:.82rem;color:#8b98b3;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+.foot-bottom a{display:inline;padding:0;font-size:.82rem;color:#8b98b3}
+.foot-bottom a:hover{color:var(--amber)}
+.lang-foot a{color:#c3ccdb}
+.lang-foot a.active{background:var(--ink-2);color:var(--amber)}
+.lang-foot a:hover{color:var(--amber)}
+
+/* ---------- Utility ---------- */
+.mt0{margin-top:0}.mb0{margin-bottom:0}
+.section-alt{background:#f1e9da}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px}
+.notice{background:#efe7d6;border:1px solid #e0d3b4;border-radius:10px;padding:15px 18px;font-size:.92rem;color:#6a4a17}
+.notice a{color:var(--amber-d);font-weight:600}
+
+/* lang switch */
+.lang{display:flex;gap:2px;font-size:.82rem}
+.lang a{padding:5px 8px;border-radius:6px;color:var(--muted);cursor:pointer}
+.lang a:hover{color:var(--amber-d)}
+.lang a.active{background:#efe7d6;color:var(--amber-d);font-weight:700}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1050px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:12px 24px;border-bottom:1px solid var(--border);gap:2px;box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:11px 0;border-bottom:1px solid var(--border)}
+  .nav-links a.active{box-shadow:none}
+  .burger{display:block}
+  /* выпадающее меню раскрывается в общий список */
+  .has-drop{width:100%}
+  .drop-toggle{display:none}
+  .drop{position:static;display:block;border:0;box-shadow:none;padding:0;background:transparent;min-width:0}
+  .drop a{padding:11px 0;border-radius:0}
+}
+@media(max-width:960px){
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .kpi{grid-template-columns:repeat(2,1fr)}
+  .dash{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  section{padding:48px 0}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .corridor-nodes{font-size:.68rem}
+  .nav-right .lang{display:none}
+}
+@media(max-width:520px){
+  .nav-right .btn{display:none}
+  .corridor-nodes span:nth-child(2),.corridor-nodes span:nth-child(4){display:none}
+}

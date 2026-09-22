@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Стать членом Ассоциации — ECOM KG</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="register.html">
+<div id="header"></div>
+
+<section class="page-banner"><div class="container">
+  <div class="crumbs"><a href="index.html">Главная</a> / Регистрация</div>
+  <h1>Стать членом Ассоциации</h1>
+</div></section>
+
+<section><div class="container">
+  <form class="form" data-demo style="margin:0 auto">
+    <h2>Анкета участника</h2>
+    <div class="field"><label>Тип членства</label><select id="mtype"><option value="beginner">Начинающий селлер — 2 000 сом/год</option><option value="seller" selected>Селлер — 6 000 сом/год</option><option value="producer">Производитель — 8 000 сом/год</option><option value="partner">Партнёр — от 20 000 сом/год</option><option value="premium">Премиум — от 30 000 сом/год</option><option value="corp">Корпоративный / международный</option></select></div>
+    <div class="field"><label>ФИО / Название компании</label><input type="text" required></div>
+    <div class="field"><label>E-mail</label><input type="email" required></div>
+    <div class="field"><label>Телефон</label><input type="tel" placeholder="+996 ..." required></div>
+    <div class="field"><label>Город</label><input type="text" value="Бишкек"></div>
+    <div class="field"><label>Ссылка на магазин / маркетплейс (если есть)</label><input type="text"></div>
+    <div class="field"><label>Пароль</label><input type="password" required></div>
+
+    <div class="field check-row"><input type="checkbox" required id="ofer"><label for="ofer" style="font-weight:400">Я принимаю <a href="#" onclick="alert('Демо: здесь откроется электронный договор оферты в PDF.');return false;">электронный договор оферты</a> и согласен на обработку персональных данных.</label></div>
+
+    <div class="notice" style="margin:0 0 16px">К оплате: <b id="sum">6 000 сом</b>. После оплаты доступ в личный кабинет откроется автоматически.</div>
+
+    <button class="btn btn-primary" type="submit" style="width:100%">Перейти к оплате</button>
+    <p class="muted center" style="margin-top:12px;font-size:.85rem">Оплата картой через защищённую платёжную систему (FreedomPay / банковские карты).</p>
+  </form>
+</div></section>
+
+<div id="footer"></div>
+<script src="js/main.js"></script>
+<script>
+var prices={beginner:'2 000 сом',seller:'6 000 сом',producer:'8 000 сом',partner:'от 20 000 сом',premium:'от 30 000 сом',corp:'по договорённости'};
+var t=document.getElementById('mtype');
+var params=new URLSearchParams(location.search);
+if(params.get('type')&&prices[params.get('type')]) t.value=params.get('type');
+function upd(){document.getElementById('sum').textContent=prices[t.value];}
+t.addEventListener('change',upd);upd();
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Админ-панель — ECOM KG</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="">
+<div id="header"></div>
+
+<section class="page-banner"><div class="container">
+  <div class="crumbs"><a href="index.html">Главная</a> / Администрирование</div>
+  <h1>Административная панель</h1>
+</div></section>
+
+<section><div class="container">
+  <div class="dash">
+    <aside class="dash-menu">
+      <a class="active">📊 Дашборд</a>
+      <a>👥 Пользователи</a>
+      <a>🎫 Статусы членства</a>
+      <a>💳 Оплаты и отчёты</a>
+      <a>🎓 Обучение и видеоуроки</a>
+      <a>📅 Мероприятия</a>
+      <a>🏢 Модерация партнёров</a>
+      <a>📨 Заявки и обращения</a>
+      <a>📰 Новости и документы</a>
+      <a>📢 Рассылки (SMS / e-mail)</a>
+      <a>📈 Аналитика платформы</a>
+    </aside>
+    <div>
+      <div class="kpi">
+        <div class="card"><span class="muted">Пользователей</span><br><b>512</b></div>
+        <div class="card"><span class="muted">Активных членов</span><br><b>438</b></div>
+        <div class="card"><span class="muted">Взносы (мес.)</span><br><b>1.2 млн</b><span class="muted"> сом</span></div>
+        <div class="card"><span class="muted">Партнёров</span><br><b>63</b></div>
+      </div>
+
+      <div class="grid g2" style="margin-bottom:20px">
+        <div class="card">
+          <h3>👥 Последние регистрации</h3>
+          <table><thead><tr><th>Пользователь</th><th>Тип</th><th>Оплата</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Азамат К.</td><td>Селлер</td><td><span class="status st-ok">Оплачено</span></td><td><a href="#" data-req>Открыть</a></td></tr>
+            <tr><td>ООО «Логистик»</td><td>Партнёр</td><td><span class="status st-wait">Модерация</span></td><td><a href="#" data-req>Проверить</a></td></tr>
+            <tr><td>Нургуль Т.</td><td>Начинающий</td><td><span class="status st-new">Ожидает</span></td><td><a href="#" data-req>Открыть</a></td></tr>
+          </tbody></table>
+        </div>
+        <div class="card">
+          <h3>📢 Быстрая рассылка</h3>
+          <form data-demo>
+            <div class="field"><label>Канал</label><select><option>E-mail</option><option>SMS</option><option>Telegram</option><option>Все каналы</option></select></div>
+            <div class="field"><label>Получатели</label><select><option>Все члены</option><option>Селлеры</option><option>Партнёры</option><option>Начинающие</option></select></div>
+            <div class="field"><label>Сообщение</label><textarea rows="3" required></textarea></div>
+            <button class="btn btn-primary" type="submit">Отправить</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🏢 Модерация партнёров</h3>
+        <table><thead><tr><th>Компания</th><th>Категория</th><th>Дата заявки</th><th>Действие</th></tr></thead>
+        <tbody>
+          <tr><td>ООО «Логистик»</td><td>Логистика</td><td>21.09.2026</td><td><a href="#" class="btn btn-primary btn-sm" data-req>Одобрить</a> <a href="#" class="btn btn-outline btn-sm" data-req>Отклонить</a></td></tr>
+          <tr><td>Fulfillment KG</td><td>Фулфилмент</td><td>20.09.2026</td><td><a href="#" class="btn btn-primary btn-sm" data-req>Одобрить</a> <a href="#" class="btn btn-outline btn-sm" data-req>Отклонить</a></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div id="footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

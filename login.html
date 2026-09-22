@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вход — ECOM KG</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login.html">
+<div id="header"></div>
+
+<section class="page-banner"><div class="container">
+  <div class="crumbs"><a href="index.html">Главная</a> / Вход</div>
+  <h1>Вход в личный кабинет</h1>
+</div></section>
+
+<section><div class="container">
+  <form class="form" style="margin:0 auto;max-width:420px" onsubmit="event.preventDefault();var r=document.getElementById('role').value;location.href=(r==='partner'?'partner.html':r==='admin'?'admin.html':'cabinet.html');">
+    <div class="field"><label>E-mail</label><input type="email" required></div>
+    <div class="field"><label>Пароль</label><input type="password" required></div>
+    <div class="field"><label>Войти как (демо)</label><select id="role"><option value="seller">Селлер / член Ассоциации</option><option value="partner">Партнёр</option><option value="admin">Администратор</option></select></div>
+    <button class="btn btn-primary" type="submit" style="width:100%">Войти</button>
+    <p class="center" style="margin-top:14px"><a href="#" onclick="alert('Демо: восстановление пароля по e-mail.');return false;">Забыли пароль?</a></p>
+    <p class="center muted" style="font-size:.9rem">Нет аккаунта? <a href="register.html">Стать членом Ассоциации</a></p>
+  </form>
+  <div class="notice" style="max-width:420px;margin:20px auto 0">Демо-режим: выберите роль и нажмите «Войти», чтобы посмотреть соответствующий личный кабинет.</div>
+</div></section>
+
+<div id="footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

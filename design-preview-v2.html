@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECOM KG — направления дизайна v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=Unbounded:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9dbe0;font-family:Inter,system-ui,sans-serif}
+.label-bar{background:#111;color:#fff;padding:14px 22px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.label-bar .k{color:#9aa7b8}
+.frame{margin:0 auto 40px}
+a{text-decoration:none}
+img{max-width:100%}
+
+/* ============ A — ТОРГОВЫЙ КОРИДОР ============ */
+.A{--ink:#16233b;--paper:#f3ece0;--amber:#c8792e;--teal:#2f7d76;--line:#cdbfa8;
+   background:var(--ink);color:var(--paper);font-family:Inter,sans-serif;overflow:hidden}
+.A .inner{max-width:1180px;margin:0 auto;padding:64px 40px}
+.A .kicker{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--amber);margin-bottom:14px}
+.A h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.2rem,5vw,4rem);line-height:1.02;letter-spacing:-.01em;max-width:15ch;margin-bottom:20px}
+.A .lead{font-size:1.12rem;line-height:1.6;max-width:52ch;color:#e5dccb}
+.A .acts{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.A .btn{padding:14px 26px;font-weight:600;font-size:.98rem;border-radius:2px}
+.A .btn-1{background:var(--amber);color:#231404}
+.A .btn-2{background:transparent;color:var(--paper);border:1px solid #52617a}
+/* corridor map */
+.A .map{margin-top:54px;position:relative}
+.A svg{width:100%;height:auto;display:block}
+.A .nodes{display:flex;justify-content:space-between;margin-top:12px;font-size:.8rem;color:#a9b4c6}
+.A .nodes b{display:block;color:var(--paper);font-weight:600;font-size:.95rem;font-family:'Fraunces',serif}
+.A .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #2a3a55;margin-top:56px}
+.A .cell{padding:26px 24px 26px 0}
+.A .cell .n{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:var(--amber);line-height:1}
+.A .cell p{color:#c3ccdb;margin-top:8px;font-size:.92rem;max-width:26ch}
+
+/* ============ B — ТУНДУК ============ */
+.B{--paper:#faf7f2;--ink:#181613;--red:#e0402b;--gold:#f2c14e;--soft:#6f6a62;
+   background:var(--paper);color:var(--ink);font-family:Inter,sans-serif}
+.B .inner{max-width:1180px;margin:0 auto;padding:0}
+.B .top{display:grid;grid-template-columns:1.15fr .85fr;min-height:520px;align-items:center}
+.B .txt{padding:70px 56px 70px 40px}
+.B .eyebrow{font-family:'Unbounded',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.06em;color:var(--red);margin-bottom:20px}
+.B h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(1.9rem,3.8vw,3.1rem);line-height:1.06;letter-spacing:-.02em;margin-bottom:22px}
+.B .lead{font-size:1.1rem;line-height:1.65;color:#3d3a35;max-width:42ch}
+.B .acts{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.B .btn{padding:15px 28px;font-weight:700;font-size:.95rem;border-radius:10px;font-family:Inter}
+.B .btn-1{background:var(--red);color:#fff}
+.B .btn-2{background:#fff;color:var(--ink);border:1.5px solid #e2ddd4}
+.B .art{align-self:stretch;background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.B .art svg{width:82%;height:auto}
+.B .facts{border-top:1px solid #ece7de;display:grid;grid-template-columns:repeat(4,1fr)}
+.B .fact{padding:30px 24px 34px 40px;border-right:1px solid #ece7de}
+.B .fact:last-child{border-right:0}
+.B .fact .n{font-family:'Unbounded',sans-serif;font-weight:800;font-size:1.9rem}
+.B .fact .n em{font-style:normal;color:var(--red)}
+.B .fact p{color:var(--soft);font-size:.88rem;margin-top:6px}
+
+/* ============ C — ЛОГИСТИЧЕСКИЙ ПОТОК ============ */
+.C{--bg:#0e1a24;--panel:#132532;--edge:#20384a;--sig:#0aa1ff;--txt:#e7eef4;--dim:#7d94a6;--ok:#31d0a5;
+   background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans',sans-serif}
+.C .inner{max-width:1180px;margin:0 auto;padding:56px 40px}
+.C .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.C .status{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ok);display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.C .status .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(49,208,165,.18)}
+.C h1{font-weight:600;font-size:clamp(1.8rem,3.6vw,2.8rem);line-height:1.1;letter-spacing:-.02em;max-width:20ch}
+.C .lead{color:var(--dim);font-size:1.05rem;margin-top:14px;max-width:46ch;line-height:1.6}
+.C .btn{padding:13px 24px;font-weight:600;border-radius:8px;font-size:.95rem;white-space:nowrap}
+.C .btn-1{background:var(--sig);color:#031a2b}
+.C .board{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.C .tile{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:18px}
+.C .tile .lab{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--dim);letter-spacing:.02em}
+.C .tile .val{font-family:'IBM Plex Mono',monospace;font-size:2rem;font-weight:500;margin-top:10px}
+.C .tile .val small{font-size:.9rem;color:var(--dim)}
+.C .tile .delta{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ok);margin-top:6px}
+.C .track{grid-column:span 2;background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:18px}
+.C .track .lab{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--dim);margin-bottom:14px}
+.C .route{display:flex;align-items:center;gap:0}
+.C .stop{flex:1;text-align:center;position:relative;font-size:.72rem;color:var(--dim)}
+.C .stop .pt{width:12px;height:12px;border-radius:50%;background:var(--edge);margin:0 auto 8px;border:2px solid var(--panel)}
+.C .stop.done .pt{background:var(--sig)}
+.C .stop.now .pt{background:var(--ok);box-shadow:0 0 0 5px rgba(49,208,165,.2)}
+.C .bar{position:absolute;top:5px;left:50%;width:100%;height:2px;background:var(--edge);z-index:0}
+.C .stop.done .bar{background:var(--sig)}
+.C .stop b{display:block;color:var(--txt);font-weight:600;margin-top:2px;font-size:.8rem}
+
+@media(max-width:820px){
+  .A .inner,.C .inner{padding:44px 22px}
+  .A .strip,.C .board{grid-template-columns:1fr 1fr}
+  .B .top{grid-template-columns:1fr}
+  .B .txt{padding:44px 22px}
+  .B .art{min-height:280px}
+  .B .facts{grid-template-columns:1fr 1fr}
+  .B .fact{padding-left:22px}
+  .C .track{grid-column:span 2}
+}
+</style>
+</head>
+<body>
+
+<!-- A -->
+<div class="label-bar"><span><span class="k">Направление A —</span> Торговый коридор · Шёлковый путь</span><span class="k">Fraunces · индиго / янтарь</span></div>
+<section class="A frame"><div class="inner">
+  <div class="kicker">Ассоциация трансграничной торговли КР</div>
+  <h1>Кыргызстан на карте мировой электронной торговли</h1>
+  <p class="lead">Один вход к маркетплейсам, логистике и финансированию. Мы ведём селлера от первой поставки до экспорта — по всему торговому коридору.</p>
+  <div class="acts"><a class="btn btn-1">Вступить в Ассоциацию</a><a class="btn btn-2">Каталог партнёров</a></div>
+
+  <div class="map">
+    <svg viewBox="0 0 1100 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M40 110 C 180 40, 300 40, 420 90 S 640 140, 760 70 S 980 30, 1060 60" stroke="#c8792e" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
+      <g fill="#f3ece0" stroke="#16233b" stroke-width="3">
+        <circle cx="40" cy="110" r="7"/><circle cx="300" cy="52" r="7"/><circle cx="560" cy="112" r="7"/><circle cx="820" cy="58" r="7"/><circle cx="1060" cy="60" r="9" fill="#c8792e" stroke="#c8792e"/>
+      </g>
+    </svg>
+    <div class="nodes">
+      <span><b>Бишкек</b>старт селлера</span>
+      <span><b>Алматы</b>региональный хаб</span>
+      <span><b>Ürümqi</b>граница · карго</span>
+      <span><b>Москва</b>Wildberries · Ozon</span>
+      <span><b>Мир</b>Amazon · Alibaba</span>
+    </div>
+  </div>
+
+  <div class="strip" style="border-top:1px solid #2a3a55">
+    <div class="cell"><div class="n">6 000₽</div><p>членский взнос в год открывает доступ ко всей экосистеме</p></div>
+    <div class="cell"><div class="n">63</div><p>проверенных партнёра: логистика, банки, фулфилмент</p></div>
+    <div class="cell"><div class="n">−30%</div><p>средняя скидка на логистику и карго для членов</p></div>
+  </div>
+</div></section>
+
+<!-- B -->
+<div class="label-bar"><span><span class="k">Направление B —</span> Тундук · национальная опора</span><span class="k">Unbounded · красный / золото</span></div>
+<section class="B frame"><div class="inner">
+  <div class="top">
+    <div class="txt">
+      <div class="eyebrow">Ассоциация электронной торговли Кыргызстана</div>
+      <h1>Опора для тех, кто торгует за границей</h1>
+      <p class="lead">Членство даёт селлеру обучение, партнёров и поддержку комитетов — то, что раньше приходилось искать по одному.</p>
+      <div class="acts"><a class="btn btn-1">Стать членом</a><a class="btn btn-2">Как это работает</a></div>
+    </div>
+    <div class="art">
+      <!-- абстрактный тундук: кольцо, перекрестье крыши юрты, лучи -->
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="#f2c14e" stroke-width="2" fill="none" opacity="0.9">
+          <g id="rays"></g>
+        </g>
+        <circle cx="150" cy="150" r="96" fill="none" stroke="#e0402b" stroke-width="10"/>
+        <g stroke="#faf7f2" stroke-width="7" stroke-linecap="round">
+          <path d="M108 128 Q150 104 192 128"/><path d="M108 150 Q150 126 192 150"/><path d="M108 172 Q150 148 192 172"/>
+          <path d="M128 108 Q104 150 128 192"/><path d="M150 108 Q126 150 150 192"/><path d="M172 108 Q148 150 172 192"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="facts">
+    <div class="fact"><div class="n">500<em>+</em></div><p>селлеров в Ассоциации</p></div>
+    <div class="fact"><div class="n">9</div><p>профильных комитетов</p></div>
+    <div class="fact"><div class="n">40<em>+</em></div><p>обучающих программ</p></div>
+    <div class="fact"><div class="n">3</div><p>языка: KG · RU · EN</p></div>
+  </div>
+</div></section>
+
+<!-- C -->
+<div class="label-bar"><span><span class="k">Направление C —</span> Логистический поток · операционный</span><span class="k">IBM Plex · графит / сигнал</span></div>
+<section class="C frame"><div class="inner">
+  <div class="head">
+    <div>
+      <div class="status"><span class="dot"></span>платформа работает · 512 активных членов</div>
+      <h1>Продажи, логистика и членство — в одном кабинете</h1>
+      <p class="lead">Отслеживайте поставки, тарифы партнёров и заявки без десятка чатов и таблиц.</p>
+    </div>
+    <a class="btn btn-1">Открыть кабинет</a>
+  </div>
+
+  <div class="board">
+    <div class="tile"><div class="lab">ВЗНОСЫ ЗА МЕСЯЦ</div><div class="val">1.2<small> млн сом</small></div><div class="delta">▲ 14% к прошлому</div></div>
+    <div class="tile"><div class="lab">АКТИВНЫХ ЗАЯВОК</div><div class="val">37</div><div class="delta">7 новых сегодня</div></div>
+    <div class="tile"><div class="lab">ТАРИФ КАРГО CN→KG</div><div class="val">4.9<small> $/кг</small></div><div class="delta">−0.3 для членов</div></div>
+    <div class="track">
+      <div class="lab">ТРЕКИНГ ПОСТАВКИ · WB-4471</div>
+      <div class="route">
+        <div class="stop done"><span class="bar"></span><span class="pt"></span><b>Ürümqi</b>отгружено</div>
+        <div class="stop done"><span class="bar"></span><span class="pt"></span><b>Граница</b>оформлено</div>
+        <div class="stop now"><span class="bar"></span><span class="pt"></span><b>Бишкек</b>фулфилмент</div>
+        <div class="stop"><span class="bar"></span><span class="pt"></span><b>Москва</b>склад WB</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<script>
+// лучи тундука для B
+var r=document.getElementById('rays');
+if(r){var h='';for(var i=0;i<40;i++){var a=i*9*Math.PI/180;var x1=150+108*Math.cos(a),y1=150+108*Math.sin(a),x2=150+138*Math.cos(a),y2=150+138*Math.sin(a);h+='<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'"/>';}r.innerHTML=h;}
+</script>
+</body>
+</html>
