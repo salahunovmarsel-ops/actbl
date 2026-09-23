@@ -268,6 +268,15 @@ footer.site a:hover{color:#fff}
 .segmented button:hover{color:var(--navy)}
 .segmented button.active{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
 .role-hint{background:var(--blue-soft);border-radius:10px;padding:12px 14px;font-size:.88rem;color:#274a86;margin-bottom:20px}
+.auth-alt{border-top:1px solid var(--border);margin-top:22px;padding-top:18px;font-size:.9rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+.auth-alt a{font-weight:600}
+/* админ-вход: центрированная карточка на тёмном фоне */
+.auth-center{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:center;justify-content:center;padding:48px 24px;background:var(--navy);overflow:hidden}
+.auth-center .bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.5}
+.auth-center .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(8,20,38,.92),rgba(11,29,54,.88))}
+.auth-card{position:relative;z-index:1;background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.4);padding:40px 38px;max-width:430px;width:100%}
+.auth-card .lock{width:54px;height:54px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px}
+.auth-card h1{font-size:1.55rem}
 
 /* ---------- Responsive ---------- */
 @media(max-width:1360px){ .logo .lg-sub{display:none} }

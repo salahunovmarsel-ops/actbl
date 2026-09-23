@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Вход — ECOM KG</title>
-<meta name="description" content="Вход в личный кабинет ECOM KG для клиентов, партнёров и администраторов платформы.">
+<title>Вход для клиентов — ECOM KG</title>
+<meta name="description" content="Вход в личный кабинет клиента ECOM KG: обучение, заявки партнёрам, мероприятия и сервисы для селлеров.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="login.html">
@@ -12,11 +12,10 @@
 
 <section class="auth">
   <div class="auth-wrap">
-    <!-- Брендовая панель -->
     <div class="auth-side">
       <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&q=80&auto=format&fit=crop')"></div>
       <div class="content">
-        <div class="overline" style="color:#8fb4ff">ECOM KG</div>
+        <div class="overline" style="color:#8fb4ff">Кабинет клиента</div>
         <h2>Рады видеть вас снова</h2>
         <p>Единая платформа электронной торговли и логистики Кыргызстана. Войдите, чтобы продолжить работу.</p>
         <ul class="checks" style="margin-top:20px">
@@ -27,29 +26,24 @@
       </div>
     </div>
 
-    <!-- Форма входа -->
     <div class="auth-form">
       <div class="box">
-        <h1>Вход в кабинет</h1>
-        <p class="sub">Выберите тип аккаунта и войдите</p>
+        <h1>Вход для клиентов</h1>
+        <p class="sub">Селлеры, производители и члены Ассоциации</p>
 
-        <div class="segmented" id="roles">
-          <button type="button" class="active" data-role="seller" data-target="cabinet.html"><span class="si">🧑‍💼</span>Клиент</button>
-          <button type="button" data-role="partner" data-target="partner.html"><span class="si">🏢</span>Партнёр</button>
-          <button type="button" data-role="admin" data-target="admin.html"><span class="si">🛡️</span>Администратор</button>
-        </div>
-        <div class="role-hint" id="roleHint">Личный кабинет селлера и члена Ассоциации: обучение, заявки, мероприятия и уведомления.</div>
-
-        <form id="loginForm">
+        <form id="loginForm" style="margin-top:22px">
           <div class="field"><label>E-mail</label><input type="email" placeholder="you@example.com" required></div>
           <div class="field"><label>Пароль</label><input type="password" placeholder="••••••••" required></div>
-          <button class="btn btn-primary" type="submit" style="width:100%">Войти</button>
+          <button class="btn btn-primary" type="submit" style="width:100%">Войти в кабинет</button>
         </form>
 
         <p class="center" style="margin-top:16px"><a href="#" onclick="alert('Демо: восстановление пароля по e-mail.');return false;">Забыли пароль?</a></p>
         <p class="center muted" style="font-size:.9rem">Нет аккаунта? <a href="register.html">Стать членом Ассоциации</a></p>
 
-        <div class="notice" style="margin-top:8px;font-size:.85rem">Демо-режим: выберите роль и войдите, чтобы посмотреть соответствующий кабинет. На рабочей версии роль определяется автоматически по вашему аккаунту.</div>
+        <div class="auth-alt">
+          <span>🏢 Вы компания-партнёр? <a href="partner-login.html">Вход для партнёров →</a></span>
+          <span>🛡️ Сотрудник платформы? <a href="admin-login.html">Вход для администрации →</a></span>
+        </div>
       </div>
     </div>
   </div>
@@ -58,27 +52,9 @@
 <div id="footer"></div>
 <script src="js/main.js"></script>
 <script>
-(function () {
-  var hints = {
-    seller: 'Личный кабинет селлера и члена Ассоциации: обучение, заявки, мероприятия и уведомления.',
-    partner: 'Кабинет компании-партнёра: услуги и предложения, заявки от селлеров, статистика.',
-    admin: 'Административная панель платформы ECOM KG: пользователи, оплаты, модерация, рассылки.'
-  };
-  var current = 'cabinet.html';
-  var roles = document.getElementById('roles');
-  roles.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-role]');
-    if (!b) return;
-    roles.querySelectorAll('button').forEach(function (x) { x.classList.remove('active'); });
-    b.classList.add('active');
-    current = b.getAttribute('data-target');
-    document.getElementById('roleHint').textContent = hints[b.getAttribute('data-role')];
-  });
-  document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    location.href = current;
-  });
-})();
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault(); location.href = 'cabinet.html';
+});
 </script>
 </body>
 </html>

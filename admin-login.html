@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вход для администрации — ECOM KG</title>
+<meta name="description" content="Служебный вход в панель администрирования платформы ECOM KG. Доступ только для сотрудников.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="">
+<div id="header"></div>
+
+<section class="auth-center">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="auth-card">
+    <div class="lock">🛡️</div>
+    <h1>Панель администрирования</h1>
+    <p class="sub" style="margin-bottom:22px">Служебный вход. Доступ только для сотрудников ECOM KG.</p>
+
+    <form id="loginForm">
+      <div class="field"><label>Служебный e-mail</label><input type="email" placeholder="admin@ecomkg.kg" required></div>
+      <div class="field"><label>Пароль</label><input type="password" placeholder="••••••••" required></div>
+      <button class="btn btn-primary" type="submit" style="width:100%">Войти в панель</button>
+    </form>
+
+    <div class="notice" style="margin-top:18px;font-size:.85rem">Все входы фиксируются. Несанкционированный доступ запрещён. На рабочей версии здесь добавляется двухфакторная аутентификация.</div>
+
+    <div class="auth-alt">
+      <span>Не сотрудник? <a href="login.html">Вход для клиентов</a> · <a href="partner-login.html">для партнёров</a></span>
+      <span><a href="index.html">← Вернуться на сайт</a></span>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="js/main.js"></script>
+<script>
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault(); location.href = 'admin.html';
+});
+</script>
+</body>
+</html>

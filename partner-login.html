@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вход для партнёров — ECOM KG</title>
+<meta name="description" content="Вход в кабинет компании-партнёра ECOM KG: услуги и предложения, заявки от селлеров, статистика.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="">
+<div id="header"></div>
+
+<section class="auth">
+  <div class="auth-wrap">
+    <div class="auth-side">
+      <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=80&auto=format&fit=crop')"></div>
+      <div class="content">
+        <div class="overline" style="color:#8fb4ff">Кабинет партнёра</div>
+        <h2>Работайте с селлерами Кыргызстана</h2>
+        <p>Размещайте услуги, получайте заявки от членов Ассоциации и развивайте бизнес вместе с ECOM KG.</p>
+        <ul class="checks" style="margin-top:20px">
+          <li>Заявки от селлеров и обработка обращений</li>
+          <li>Витрина услуг, предложений и скидок</li>
+          <li>Статистика просмотров и конверсии</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="auth-form">
+      <div class="box">
+        <h1>Вход для партнёров</h1>
+        <p class="sub">Логистика, финансы, фулфилмент, сервисы</p>
+
+        <form id="loginForm" style="margin-top:22px">
+          <div class="field"><label>E-mail компании</label><input type="email" placeholder="company@example.com" required></div>
+          <div class="field"><label>Пароль</label><input type="password" placeholder="••••••••" required></div>
+          <button class="btn btn-primary" type="submit" style="width:100%">Войти в кабинет партнёра</button>
+        </form>
+
+        <p class="center" style="margin-top:16px"><a href="#" onclick="alert('Демо: восстановление пароля по e-mail.');return false;">Забыли пароль?</a></p>
+        <p class="center muted" style="font-size:.9rem">Ещё не партнёр? <a href="register.html?type=partner">Подать заявку на партнёрство</a></p>
+
+        <div class="auth-alt">
+          <span>🧑‍💼 Вы селлер или клиент? <a href="login.html">Вход для клиентов →</a></span>
+          <span>🛡️ Сотрудник платформы? <a href="admin-login.html">Вход для администрации →</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="js/main.js"></script>
+<script>
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault(); location.href = 'partner.html';
+});
+</script>
+</body>
+</html>

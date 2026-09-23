@@ -87,7 +87,7 @@
         '<span>© 2026 ECOM KG. Все права защищены. Платформа ACTBL.</span>' +
         '<span style="display:flex;gap:16px;align-items:center">' +
           langSelector(true) +
-          '<a href="offer.html">Договор оферты</a><a href="privacy.html">Политика конфиденциальности</a>' +
+          '<a href="partner-login.html">Вход для партнёров</a><a href="admin-login.html">Вход для администрации</a><a href="offer.html">Оферта</a><a href="privacy.html">Конфиденциальность</a>' +
         '</span>' +
       '</div>' +
     '</div></footer>';
