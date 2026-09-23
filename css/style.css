@@ -39,6 +39,7 @@ p{margin:0 0 1em}
 
 /* ---------- Header ---------- */
 header.site{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid var(--border-dark)}
+header.site .container{max-width:1500px}
 .nav{display:flex;align-items:center;gap:22px;height:72px}
 .logo{display:flex;align-items:center;gap:10px;color:#fff;white-space:nowrap}
 .logo svg{width:36px;height:28px;flex:none}
@@ -46,7 +47,7 @@ header.site{position:sticky;top:0;z-index:50;background:var(--navy);border-botto
 .logo .lg-txt{font-weight:800;font-size:1.15rem;letter-spacing:.01em;line-height:1}
 .logo .lg-txt span{color:var(--blue)}
 .logo .lg-sub{display:block;font-size:.6rem;font-weight:500;letter-spacing:.02em;color:#9db0c9;margin-top:3px;text-transform:none}
-.nav-links{display:flex;gap:15px;margin-left:6px;flex-wrap:wrap}
+.nav-links{display:flex;gap:16px;margin-left:6px;flex-wrap:nowrap;white-space:nowrap}
 .nav-links a{color:#d7e0ee;font-size:.89rem;padding:6px 2px;font-weight:500}
 .nav-links a:hover{color:#fff}
 .nav-links a.active{color:#fff;font-weight:600;box-shadow:inset 0 -2px 0 var(--blue)}
@@ -233,8 +234,8 @@ footer.site a:hover{color:#fff}
 
 /* ---------- Responsive ---------- */
 @media(max-width:1360px){ .logo .lg-sub{display:none} }
-@media(max-width:1050px){
-  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--navy);flex-direction:column;padding:12px 24px;border-bottom:1px solid var(--border-dark);gap:2px;box-shadow:var(--shadow)}
+@media(max-width:1200px){
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--navy);flex-direction:column;padding:12px 24px;border-bottom:1px solid var(--border-dark);gap:2px;box-shadow:var(--shadow);white-space:normal}
   .nav-links.open{display:flex}
   .nav-links a{padding:12px 0;border-bottom:1px solid var(--border-dark);color:#d7e0ee}
   .nav-links a.active{box-shadow:none;color:#fff}
