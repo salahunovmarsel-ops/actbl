@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Новость — ECOM KG</title>
+<meta name="description" content="Новости и аналитика электронной коммерции Кыргызстана — Ассоциация ECOM KG.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="">
+<div id="header"></div>
+
+<section class="page-banner"><div class="container">
+  <div class="crumbs"><a href="index.html">Главная</a> / <a href="news.html">Новости</a> / <span id="crumb">Статья</span></div>
+  <h1 id="title">Новость</h1>
+  <p id="meta"></p>
+</div></section>
+
+<section><div class="container" style="max-width:820px">
+  <div id="body"></div>
+  <p style="margin-top:32px"><a href="news.html" class="btn btn-outline">← Ко всем новостям</a></p>
+</div></section>
+
+<div id="footer"></div>
+<script src="js/main.js"></script>
+<script>
+var articles = {
+  "1":{cat:"Ассоциация",date:"20 сентября 2026",title:"Открыт набор в новые обучающие программы",
+    body:"Ассоциация ECOM KG обновила линейку курсов для членов. В программу вошли новые модули по работе с маркетплейсами, аналитике продаж и логистике. Обучение доступно бесплатно в личном кабинете члена Ассоциации."},
+  "2":{cat:"Маркетплейсы",date:"18 сентября 2026",title:"Wildberries меняет условия для продавцов",
+    body:"Площадка обновила правила работы с продавцами. Разбираем ключевые изменения и что они значат для селлеров из Кыргызстана: комиссии, логистика и требования к карточкам товаров."},
+  "3":{cat:"Логистика",date:"15 сентября 2026",title:"Новые тарифы на карго из Китая",
+    body:"Партнёры Ассоциации предложили специальные тарифы на доставку из Китая для членов ECOM KG. Экономия на логистике достигает 30% по сравнению со стандартными ставками."},
+  "4":{cat:"Законодательство",date:"12 сентября 2026",title:"Изменения в таможенном оформлении",
+    body:"Обзор последних изменений в таможенном оформлении для трансграничной торговли. Что учитывать при ввозе и вывозе товаров, какие документы потребуются."},
+  "5":{cat:"Аналитика",date:"8 сентября 2026",title:"Обзор рынка e-commerce КР 2026",
+    body:"Аналитический отчёт по рынку электронной коммерции Кыргызстана: динамика, ключевые категории, тренды трансграничной торговли и прогноз на ближайший год."},
+  "6":{cat:"Кейс",date:"3 сентября 2026",title:"Как селлер вышел на Ozon за 30 дней",
+    body:"История члена Ассоциации: путь от идеи до первых продаж на Ozon за месяц. Какие курсы помогли, каких партнёров подобрал и с какими трудностями столкнулся."}
+};
+var id = new URLSearchParams(location.search).get('id') || '1';
+var a = articles[id] || articles['1'];
+document.getElementById('title').textContent = a.title;
+document.getElementById('crumb').textContent = a.cat;
+document.getElementById('meta').textContent = a.cat + ' · ' + a.date;
+document.title = a.title + ' — ECOM KG';
+document.getElementById('body').innerHTML =
+  '<p style="font-size:1.1rem">' + a.body + '</p>' +
+  '<p class="muted">Полный материал будет доступен в рабочей версии платформы. Члены Ассоциации получают новости и аналитику первыми — в личном кабинете и по e-mail.</p>' +
+  '<div class="notice">Хотите получать такие материалы? <a href="register.html">Вступите в Ассоциацию</a> или <a href="news.html">подпишитесь на рассылку</a>.</div>';
+</script>
+</body>
+</html>

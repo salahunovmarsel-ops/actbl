@@ -52,13 +52,13 @@
         '<div><h4>Разделы</h4>' +
           '<a href="events.html">Мероприятия</a><a href="committees.html">Комитеты</a><a href="news.html">Новости</a><a href="knowledge.html">База знаний</a></div>' +
         '<div><h4>Контакты</h4>' +
-          '<a href="mailto:info@ecomkg.kg">info@ecomkg.kg</a><a href="tel:+996700000000">+996 (700) 00-00-00</a><a href="#">г. Бишкек, Кыргызская Республика</a></div>' +
+          '<a href="mailto:info@ecomkg.kg">info@ecomkg.kg</a><a href="tel:+996700000000">+996 (700) 00-00-00</a><a href="https://maps.google.com/?q=Бишкек" target="_blank" rel="noopener">г. Бишкек, Кыргызская Республика</a></div>' +
       '</div>' +
       '<div class="foot-bottom">' +
         '<span>© 2026 ECOM KG. Ассоциация трансграничной электронной торговли и логистики КР.</span>' +
         '<span style="display:flex;gap:16px;align-items:center">' +
           '<span class="lang lang-foot"><a class="active" data-lang="ru">RU</a><a data-lang="kg">KG</a><a data-lang="en">EN</a></span>' +
-          '<a href="#">Договор оферты</a><a href="#">Политика конфиденциальности</a>' +
+          '<a href="offer.html">Договор оферты</a><a href="privacy.html">Политика конфиденциальности</a>' +
         '</span>' +
       '</div>' +
     '</div></footer>';
@@ -93,6 +93,19 @@
       alert(l === 'kg'
         ? 'Кыргызча версия — 2-этапта кошулат (по ТЗ, этап 2).'
         : 'English version is planned for stage 2 of the roadmap.');
+    }
+
+    // меню «Ещё»: открытие/закрытие по клику
+    var toggle = e.target.closest('.drop-toggle');
+    var drop = document.querySelector('.has-drop');
+    if (toggle && drop) {
+      e.preventDefault();
+      drop.classList.toggle('open');
+      return;
+    }
+    // клик вне меню — закрыть
+    if (drop && drop.classList.contains('open') && !e.target.closest('.has-drop')) {
+      drop.classList.remove('open');
     }
   });
 })();
