@@ -58,15 +58,26 @@ document.getElementById('regForm').addEventListener('submit', function (e) {
     document.getElementById('password').value,
     document.getElementById('fio').value,
     function (needConfirm) {
-      if (!ecomAuth.configured) { // демо-режим
+      // сохранить заявку на членство (тип, контакты) — попадёт в админку
+      if (window.ecomDB) {
+        ecomDB.save('membership', {
+          type: t.value,
+          price: prices[t.value],
+          fio: document.getElementById('fio').value,
+          email: document.getElementById('email').value
+        });
+      }
+      if (!ecomAuth.configured) {
         alert('Демо-режим: заявка принята. На рабочей версии здесь создаётся аккаунт и переход к оплате.');
         return;
       }
       if (needConfirm) {
-        ok.textContent = 'Аккаунт создан! Подтвердите e-mail по ссылке из письма, затем войдите.';
+        ok.textContent = 'Аккаунт создан! Подтвердите e-mail по ссылке из письма, затем войдите. Оплата взноса подключается на этапе интеграций.';
         ok.style.display = 'block';
       } else {
-        location.href = 'cabinet.html';
+        ok.textContent = 'Аккаунт создан! Оплата взноса подключается на этапе интеграций — доступ в кабинет уже открыт.';
+        ok.style.display = 'block';
+        setTimeout(function(){ location.href = 'cabinet.html'; }, 2000);
       }
     },
     function (msg) { err.textContent = 'Не удалось: ' + msg; err.classList.add('show'); }

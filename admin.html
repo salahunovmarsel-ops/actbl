@@ -54,7 +54,7 @@
         </div>
         <div class="card">
           <h3>📢 Быстрая рассылка</h3>
-          <form data-demo>
+          <form data-demo="Рассылка">
             <div class="field"><label>Канал</label><select><option>E-mail</option><option>SMS</option><option>Telegram</option><option>Все каналы</option></select></div>
             <div class="field"><label>Получатели</label><select><option>Все члены</option><option>Селлеры</option><option>Партнёры</option><option>Начинающие</option></select></div>
             <div class="field"><label>Сообщение</label><textarea rows="3" required></textarea></div>
@@ -71,11 +71,37 @@
           <tr><td>Fulfillment KG</td><td>Фулфилмент</td><td>20.09.2026</td><td><a href="#" class="btn btn-primary btn-sm" data-req>Одобрить</a> <a href="#" class="btn btn-outline btn-sm" data-req>Отклонить</a></td></tr>
         </tbody></table>
       </div>
+
+      <div class="card" style="margin-top:20px">
+        <h3>📥 Заявки с сайта</h3>
+        <p class="muted" id="feedNote" style="font-size:.85rem">Загрузка…</p>
+        <table><thead><tr><th>Дата</th><th>Тип</th><th>Данные</th></tr></thead>
+        <tbody id="liveFeed"></tbody></table>
+      </div>
     </div>
   </div>
 </div></section>
 
 <div id="footer"></div>
 <script src="js/main.js"></script>
+<script>
+(function () {
+  function esc(s) { return (s == null ? '' : s).toString().replace(/[<>&]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]; }); }
+  function render(rows) {
+    var note = document.getElementById('feedNote'); var tb = document.getElementById('liveFeed');
+    if (rows === null) { note.textContent = 'Реальные заявки появятся после настройки базы (выполните supabase-tables.sql) и входа под админом.'; return; }
+    if (!rows.length) { note.textContent = 'Пока заявок нет — они появятся здесь, когда посетители оставят их на сайте.'; return; }
+    note.style.display = 'none';
+    tb.innerHTML = rows.map(function (r) {
+      var d = new Date(r.created_at).toLocaleString('ru-RU');
+      var data = Object.keys(r.data || {}).filter(function (k) { return k !== 'page'; })
+        .map(function (k) { return '<b>' + esc(k) + ':</b> ' + esc(r.data[k]); }).join('<br>');
+      return '<tr><td style="white-space:nowrap">' + d + '</td><td>' + esc(r.type) + '</td><td>' + data + '</td></tr>';
+    }).join('');
+  }
+  function load() { if (window.ecomDB) { ecomDB.list().then(render); } else { setTimeout(load, 300); } }
+  load();
+})();
+</script>
 </body>
 </html>

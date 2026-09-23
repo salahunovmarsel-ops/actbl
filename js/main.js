@@ -109,18 +109,119 @@
     document.getElementById('navLinks').classList.toggle('open');
   });
 
-  // Демо: перехват форм и кнопок-заявок
-  document.addEventListener('submit', function (e) {
-    if (e.target.matches('[data-demo]')) {
-      e.preventDefault();
-      alert('Демо-режим: данные приняты. На рабочей версии здесь будет сохранение в базу и уведомление по e-mail/SMS.');
-      e.target.reset && e.target.reset();
+  // ---- Реальное сохранение заявок/форм в Supabase ----
+  var _sb = null;
+  function getSB(cb) {
+    if (_sb) { cb(_sb); return; }
+    function make() {
+      if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY && window.supabase) {
+        try { _sb = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY); } catch (e) { _sb = null; }
+      }
+      cb(_sb);
     }
+    function afterCfg() {
+      if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) { cb(null); return; }
+      if (window.supabase) { make(); return; }
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+      s.onload = make; s.onerror = function () { cb(null); };
+      document.head.appendChild(s);
+    }
+    if (typeof window.SUPABASE_URL !== 'undefined') { afterCfg(); return; }
+    var c = document.createElement('script'); c.src = 'js/supabase-config.js';
+    c.onload = afterCfg; c.onerror = afterCfg; document.head.appendChild(c);
+  }
+  window.ecomDB = {
+    save: function (type, data) {
+      return new Promise(function (resolve) {
+        getSB(function (sb) {
+          if (!sb) { resolve({ ok: false }); return; }
+          sb.auth.getUser().then(function (u) {
+            var uid = (u && u.data && u.data.user) ? u.data.user.id : null;
+            sb.from('submissions').insert({ type: type, data: data, user_id: uid }).then(function (r) {
+              resolve({ ok: !r.error });
+            });
+          });
+        });
+      });
+    },
+    list: function () {
+      return new Promise(function (resolve) {
+        getSB(function (sb) {
+          if (!sb) { resolve(null); return; }
+          sb.from('submissions').select('type,data,status,created_at').order('created_at', { ascending: false }).limit(50).then(function (r) {
+            resolve(r.error ? null : r.data);
+          });
+        });
+      });
+    }
+  };
+
+  function reqModal(subject) {
+    var ov = document.createElement('div'); ov.className = 'modal-ov';
+    ov.innerHTML =
+      '<div class="modal"><button class="modal-x" aria-label="Закрыть">×</button>' +
+        '<h3>Оставить заявку</h3>' +
+        (subject ? '<p class="muted" style="margin-top:-4px">По: ' + subject + '</p>' : '') +
+        '<div class="auth-ok" id="mOk" style="display:none"></div>' +
+        '<form id="mForm">' +
+          '<div class="field"><label>Ваше имя</label><input required id="mName"></div>' +
+          '<div class="field"><label>Телефон или e-mail</label><input required id="mContact"></div>' +
+          '<div class="field"><label>Комментарий</label><textarea rows="3" id="mMsg"></textarea></div>' +
+          '<button class="btn btn-primary" type="submit" style="width:100%">Отправить заявку</button>' +
+        '</form></div>';
+    document.body.appendChild(ov);
+    function close() { ov.remove(); }
+    ov.addEventListener('click', function (e) { if (e.target === ov || e.target.closest('.modal-x')) close(); });
+    ov.querySelector('#mForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = ov.querySelector('button.btn'); btn.disabled = true; btn.textContent = 'Отправляем…';
+      ecomDB.save('request', {
+        subject: subject || '',
+        name: ov.querySelector('#mName').value,
+        contact: ov.querySelector('#mContact').value,
+        message: ov.querySelector('#mMsg').value,
+        page: location.pathname
+      }).then(function (r) {
+        var ok = ov.querySelector('#mOk');
+        ok.textContent = r.ok ? '✅ Заявка отправлена! Мы свяжемся с вами.' : '✅ Заявка принята.';
+        ok.style.display = 'block';
+        ov.querySelector('#mForm').style.display = 'none';
+        setTimeout(close, 1800);
+      });
+    });
+  }
+
+  // Формы: реальное сохранение в базу
+  document.addEventListener('submit', function (e) {
+    if (!e.target.matches('[data-demo]')) return;
+    e.preventDefault();
+    var form = e.target;
+    var type = form.getAttribute('data-demo') || 'form';
+    var data = { page: location.pathname };
+    form.querySelectorAll('.field').forEach(function (f) {
+      var l = f.querySelector('label'); var c = f.querySelector('input,select,textarea');
+      if (l && c) data[l.textContent.trim()] = c.value;
+    });
+    form.querySelectorAll('input,select,textarea').forEach(function (c, i) {
+      if (!c.closest('.field')) data['Поле ' + (i + 1)] = c.value;
+    });
+    var btn = form.querySelector('[type="submit"],button'); if (btn) btn.disabled = true;
+    ecomDB.save(type, data).then(function (r) {
+      alert(r.ok
+        ? '✅ Готово! Ваши данные сохранены — мы свяжемся с вами.'
+        : '✅ Принято. Отправка уведомлений (e-mail/SMS) подключится на этапе интеграций.');
+      form.reset && form.reset();
+      if (btn) btn.disabled = false;
+    });
   });
   document.addEventListener('click', function (e) {
     if (e.target.matches('[data-req]')) {
       e.preventDefault();
-      alert('Демо-режим: заявка отправлена партнёру. На рабочей версии заявка попадёт в CRM и личный кабинет партнёра.');
+      var card = e.target.closest('.card');
+      var subj = (card && card.querySelector('h3')) ? card.querySelector('h3').textContent : '';
+      reqModal(subj);
+      return;
     }
     // соцсети (пока не заведены)
     if (e.target.closest('[data-soon]')) {
