@@ -29,14 +29,24 @@
       '<div class="drop">' + more.map(link).join('') + '</div>' +
     '</div>';
 
+  var logoSvg =
+    '<svg viewBox="0 0 46 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<path d="M1 31 L14 7 L23 22 L27 16 L35 31 Z" fill="#ffffff"/>' +
+      '<path d="M23 31 L33 12 L45 31 Z" fill="#2f6fed"/>' +
+    '</svg>';
+
   var header =
     '<header class="site"><div class="container nav">' +
-      '<a href="index.html" class="logo">ECOM<span>KG</span></a>' +
+      '<a href="index.html" class="logo">' + logoSvg +
+        '<span class="lg-col"><span class="lg-txt">ECOM <span>KG</span></span>' +
+        '<span class="lg-sub">Трансграничная торговля и логистика КР</span></span>' +
+      '</a>' +
       '<button class="burger" aria-label="Меню" id="burger">☰</button>' +
       '<nav class="nav-links" id="navLinks">' + links + '</nav>' +
       '<div class="nav-right">' +
-        '<a href="login.html" class="btn btn-outline btn-sm">Войти</a>' +
-        '<a href="register.html" class="btn btn-primary btn-sm">Стать членом</a>' +
+        '<div class="lang"><span class="globe">🌐</span><a class="active" data-lang="ru">RU</a><a data-lang="kg">KG</a><a data-lang="en">EN</a></div>' +
+        '<a href="login.html" class="btn btn-ghost btn-sm">Войти</a>' +
+        '<a href="register.html" class="btn btn-light btn-sm">Регистрация</a>' +
       '</div>' +
     '</div></header>';
 
@@ -44,18 +54,20 @@
     '<footer class="site"><div class="container">' +
       '<div class="foot-grid">' +
         '<div>' +
-          '<div class="logo" style="color:#fff;font-size:1.3rem">ECOM<span>KG</span></div>' +
-          '<p style="color:#8b98b3;max-width:340px;margin-top:10px">Национальная цифровая платформа Ассоциации трансграничной электронной торговли и логистики Кыргызской Республики.</p>' +
+          '<a href="index.html" class="logo">' + logoSvg +
+            '<span class="lg-col"><span class="lg-txt">ECOM <span>KG</span></span></span></a>' +
+          '<p style="color:#7c8ba0;max-width:360px;margin-top:14px">Цифровая платформа электронной коммерции Кыргызстана. Создана ACTBL — Ассоциацией трансграничной электронной торговли и логистики Кыргызской Республики.</p>' +
+          '<div class="foot-socials"><a href="#" title="Telegram">TG</a><a href="#" title="Instagram">IG</a><a href="#" title="YouTube">YT</a><a href="#" title="LinkedIn">in</a></div>' +
         '</div>' +
         '<div><h4>Платформа</h4>' +
           '<a href="about.html">Об Ассоциации</a><a href="membership.html">Членство</a><a href="catalog.html">Каталог сервисов</a><a href="education.html">Обучение</a></div>' +
         '<div><h4>Разделы</h4>' +
-          '<a href="events.html">Мероприятия</a><a href="committees.html">Комитеты</a><a href="news.html">Новости</a><a href="knowledge.html">База знаний</a></div>' +
+          '<a href="events.html">Мероприятия</a><a href="committees.html">Комитеты</a><a href="news.html">Новости</a><a href="knowledge.html">База знаний</a><a href="suppliers.html">Поставщики</a></div>' +
         '<div><h4>Контакты</h4>' +
           '<a href="mailto:info@ecomkg.kg">info@ecomkg.kg</a><a href="tel:+996700000000">+996 (700) 00-00-00</a><a href="https://maps.google.com/?q=Бишкек" target="_blank" rel="noopener">г. Бишкек, Кыргызская Республика</a></div>' +
       '</div>' +
       '<div class="foot-bottom">' +
-        '<span>© 2026 ECOM KG. Ассоциация трансграничной электронной торговли и логистики КР.</span>' +
+        '<span>© 2026 ECOM KG. Все права защищены. Платформа ACTBL.</span>' +
         '<span style="display:flex;gap:16px;align-items:center">' +
           '<span class="lang lang-foot"><a class="active" data-lang="ru">RU</a><a data-lang="kg">KG</a><a data-lang="en">EN</a></span>' +
           '<a href="offer.html">Договор оферты</a><a href="privacy.html">Политика конфиденциальности</a>' +
