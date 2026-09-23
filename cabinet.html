@@ -6,6 +6,9 @@
 <title>Личный кабинет селлера — ECOM KG</title>
 <meta name="description" content="Личный кабинет селлера ECOM KG: членство, обучение, заявки партнёрам, мероприятия и уведомления.">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script>ecomAuth.guard('client');</script>
 </head>
 <body data-page="">
 <div id="header"></div>
@@ -28,6 +31,7 @@
       <a>💬 Обращения в комитеты</a>
       <a>🗺️ Дорожная карта</a>
       <a>🔔 Уведомления</a>
+      <a href="#" onclick="ecomAuth.signOut();return false;">🚪 Выйти</a>
     </aside>
     <div>
       <div class="kpi">

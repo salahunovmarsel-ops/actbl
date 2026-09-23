@@ -6,6 +6,8 @@
 <title>Стать членом Ассоциации — ECOM KG</title>
 <meta name="description" content="Онлайн-вступление в Ассоциацию ECOM KG: анкета, договор оферты и оплата членского взноса.">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
 </head>
 <body data-page="register.html">
 <div id="header"></div>
@@ -16,15 +18,17 @@
 </div></section>
 
 <section><div class="container">
-  <form class="form" data-demo style="margin:0 auto">
+  <form class="form" id="regForm" style="margin:0 auto">
     <h2>Анкета участника</h2>
+    <div class="auth-err" id="regErr"></div>
+    <div class="auth-ok" id="regOk" style="display:none"></div>
     <div class="field"><label>Тип членства</label><select id="mtype"><option value="beginner">Начинающий селлер — 2 000 сом/год</option><option value="seller" selected>Селлер — 6 000 сом/год</option><option value="producer">Производитель — 8 000 сом/год</option><option value="partner">Партнёр — от 20 000 сом/год</option><option value="premium">Премиум — от 30 000 сом/год</option><option value="corp">Корпоративный / международный</option></select></div>
-    <div class="field"><label>ФИО / Название компании</label><input type="text" required></div>
-    <div class="field"><label>E-mail</label><input type="email" required></div>
+    <div class="field"><label>ФИО / Название компании</label><input type="text" id="fio" required></div>
+    <div class="field"><label>E-mail</label><input type="email" id="email" required></div>
     <div class="field"><label>Телефон</label><input type="tel" placeholder="+996 ..." required></div>
     <div class="field"><label>Город</label><input type="text" value="Бишкек"></div>
     <div class="field"><label>Ссылка на магазин / маркетплейс (если есть)</label><input type="text"></div>
-    <div class="field"><label>Пароль</label><input type="password" required></div>
+    <div class="field"><label>Пароль</label><input type="password" id="password" required minlength="6"></div>
 
     <div class="field check-row"><input type="checkbox" required id="ofer"><label for="ofer" style="font-weight:400">Я принимаю <a href="offer.html" target="_blank">договор оферты</a> и <a href="privacy.html" target="_blank">политику конфиденциальности</a>.</label></div>
 
@@ -44,6 +48,30 @@ var params=new URLSearchParams(location.search);
 if(params.get('type')&&prices[params.get('type')]) t.value=params.get('type');
 function upd(){document.getElementById('sum').textContent=prices[t.value];}
 t.addEventListener('change',upd);upd();
+
+document.getElementById('regForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var err=document.getElementById('regErr'); err.classList.remove('show');
+  var ok=document.getElementById('regOk'); ok.style.display='none';
+  ecomAuth.signUp(
+    document.getElementById('email').value,
+    document.getElementById('password').value,
+    document.getElementById('fio').value,
+    function (needConfirm) {
+      if (!ecomAuth.configured) { // демо-режим
+        alert('Демо-режим: заявка принята. На рабочей версии здесь создаётся аккаунт и переход к оплате.');
+        return;
+      }
+      if (needConfirm) {
+        ok.textContent = 'Аккаунт создан! Подтвердите e-mail по ссылке из письма, затем войдите.';
+        ok.style.display = 'block';
+      } else {
+        location.href = 'cabinet.html';
+      }
+    },
+    function (msg) { err.textContent = 'Не удалось: ' + msg; err.classList.add('show'); }
+  );
+});
 </script>
 </body>
 </html>

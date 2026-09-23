@@ -6,6 +6,9 @@
 <title>Админ-панель — ECOM KG</title>
 <meta name="description" content="Административная панель ECOM KG: пользователи, оплаты, обучение, мероприятия, модерация партнёров и рассылки.">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script>ecomAuth.guard('admin');</script>
 </head>
 <body data-page="">
 <div id="header"></div>
@@ -29,6 +32,7 @@
       <a>📰 Новости и документы</a>
       <a>📢 Рассылки (SMS / e-mail)</a>
       <a>📈 Аналитика платформы</a>
+      <a href="#" onclick="ecomAuth.signOut();return false;">🚪 Выйти</a>
     </aside>
     <div>
       <div class="kpi">

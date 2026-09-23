@@ -6,6 +6,8 @@
 <title>Вход для партнёров — ECOM KG</title>
 <meta name="description" content="Вход в кабинет компании-партнёра ECOM KG: услуги и предложения, заявки от селлеров, статистика.">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
 </head>
 <body data-page="">
 <div id="header"></div>
@@ -31,9 +33,10 @@
         <h1>Вход для партнёров</h1>
         <p class="sub">Логистика, финансы, фулфилмент, сервисы</p>
 
+        <div class="auth-err" id="authErr"></div>
         <form id="loginForm" style="margin-top:22px">
-          <div class="field"><label>E-mail компании</label><input type="email" placeholder="company@example.com" required></div>
-          <div class="field"><label>Пароль</label><input type="password" placeholder="••••••••" required></div>
+          <div class="field"><label>E-mail компании</label><input type="email" id="email" placeholder="company@example.com" required></div>
+          <div class="field"><label>Пароль</label><input type="password" id="password" placeholder="••••••••" required></div>
           <button class="btn btn-primary" type="submit" style="width:100%">Войти в кабинет партнёра</button>
         </form>
 
@@ -53,7 +56,14 @@
 <script src="js/main.js"></script>
 <script>
 document.getElementById('loginForm').addEventListener('submit', function (e) {
-  e.preventDefault(); location.href = 'partner.html';
+  e.preventDefault();
+  var err = document.getElementById('authErr'); err.classList.remove('show');
+  ecomAuth.signIn(
+    document.getElementById('email').value,
+    document.getElementById('password').value,
+    'partner',
+    function (msg) { err.textContent = msg; err.classList.add('show'); }
+  );
 });
 </script>
 </body>

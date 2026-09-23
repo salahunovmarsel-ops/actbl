@@ -268,6 +268,9 @@ footer.site a:hover{color:#fff}
 .segmented button:hover{color:var(--navy)}
 .segmented button.active{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
 .role-hint{background:var(--blue-soft);border-radius:10px;padding:12px 14px;font-size:.88rem;color:#274a86;margin-bottom:20px}
+.auth-err{display:none;background:#fdecec;border:1px solid #f6c9c9;color:#b02a2a;border-radius:9px;padding:11px 13px;font-size:.88rem;margin-bottom:14px}
+.auth-err.show{display:block}
+.auth-ok{background:#e2f4ee;border:1px solid #b8e6d6;color:#1c7a63;border-radius:9px;padding:11px 13px;font-size:.88rem;margin-bottom:14px}
 .auth-alt{border-top:1px solid var(--border);margin-top:22px;padding-top:18px;font-size:.9rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
 .auth-alt a{font-weight:600}
 /* админ-вход: центрированная карточка на тёмном фоне */

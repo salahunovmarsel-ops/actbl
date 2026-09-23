@@ -6,6 +6,9 @@
 <title>Кабинет партнёра — ECOM KG</title>
 <meta name="description" content="Кабинет партнёра ECOM KG: услуги и скидки для селлеров, заявки, статистика и обучающие материалы.">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script>ecomAuth.guard('partner');</script>
 </head>
 <body data-page="">
 <div id="header"></div>
@@ -27,6 +30,7 @@
       <a>📈 Статистика</a>
       <a>🎓 Обучающие материалы</a>
       <a>📰 Новости компании</a>
+      <a href="#" onclick="ecomAuth.signOut();return false;">🚪 Выйти</a>
     </aside>
     <div>
       <div class="kpi">
