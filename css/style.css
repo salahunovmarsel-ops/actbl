@@ -223,6 +223,20 @@ footer.site a:hover{color:#fff}
 .lang a:hover{color:#fff}
 .lang a.active{background:rgba(255,255,255,.12);color:#fff;font-weight:700}
 
+/* language selector (dropdown) */
+.langsel{position:relative}
+.langsel-btn{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;padding:9px 12px;border-radius:9px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;line-height:1}
+.langsel-btn:hover{background:rgba(255,255,255,.14)}
+.langsel-btn .globe{opacity:.85}
+.langsel-btn .chev{font-size:.62rem;opacity:.8}
+.langsel-menu{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:8px;min-width:212px;display:none;z-index:70}
+.langsel.open .langsel-menu{display:block}
+.langsel.up .langsel-menu{top:auto;bottom:calc(100% + 8px)}
+.langsel-menu a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;color:var(--text);font-size:.93rem;font-weight:500;white-space:nowrap;cursor:pointer}
+.langsel-menu a:hover{background:var(--alt);color:var(--text)}
+.langsel-menu a.active{color:var(--blue-d);font-weight:700}
+.langsel-menu a .chk{margin-left:auto;color:var(--blue-d);font-weight:700}
+
 /* photo card (роли для бизнеса) */
 .rolecard{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:.16s}
 .rolecard:hover{box-shadow:var(--shadow);transform:translateY(-2px)}

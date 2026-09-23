@@ -35,6 +35,23 @@
       '<path d="M23 31 L33 12 L45 31 Z" fill="#2f6fed"/>' +
     '</svg>';
 
+  function langSelector(up) {
+    return '<div class="langsel' + (up ? ' up' : '') + '">' +
+      '<button class="langsel-btn" type="button" aria-label="Язык">' +
+        '<span class="globe">🌐</span><span class="curflag">🇷🇺</span><span class="chev">▾</span>' +
+      '</button>' +
+      '<div class="langsel-menu">' +
+        '<a data-lang="ru" class="active">🇷🇺 Русский<span class="chk">✓</span></a>' +
+        '<a data-lang="kg">🇰🇬 Кыргызча</a>' +
+        '<a data-lang="kz">🇰🇿 Қазақша</a>' +
+        '<a data-lang="uz">🇺🇿 Oʻzbekcha</a>' +
+        '<a data-lang="tj">🇹🇯 Тоҷикӣ</a>' +
+        '<a data-lang="tm">🇹🇲 Türkmençe</a>' +
+        '<a data-lang="en">🇬🇧 English</a>' +
+      '</div>' +
+    '</div>';
+  }
+
   var header =
     '<header class="site"><div class="container nav">' +
       '<a href="index.html" class="logo">' + logoSvg +
@@ -44,7 +61,7 @@
       '<button class="burger" aria-label="Меню" id="burger">☰</button>' +
       '<nav class="nav-links" id="navLinks">' + links + '</nav>' +
       '<div class="nav-right">' +
-        '<div class="lang"><span class="globe">🌐</span><a class="active" data-lang="ru">RU</a><a data-lang="kg">KG</a><a data-lang="en">EN</a></div>' +
+        langSelector(false) +
         '<a href="login.html" class="btn btn-ghost btn-sm">Войти</a>' +
         '<a href="register.html" class="btn btn-light btn-sm">Регистрация</a>' +
       '</div>' +
@@ -69,7 +86,7 @@
       '<div class="foot-bottom">' +
         '<span>© 2026 ECOM KG. Все права защищены. Платформа ACTBL.</span>' +
         '<span style="display:flex;gap:16px;align-items:center">' +
-          '<span class="lang lang-foot"><a class="active" data-lang="ru">RU</a><a data-lang="kg">KG</a><a data-lang="en">EN</a></span>' +
+          langSelector(true) +
           '<a href="offer.html">Договор оферты</a><a href="privacy.html">Политика конфиденциальности</a>' +
         '</span>' +
       '</div>' +
@@ -98,13 +115,31 @@
       e.preventDefault();
       alert('Демо-режим: заявка отправлена партнёру. На рабочей версии заявка попадёт в CRM и личный кабинет партнёра.');
     }
-    if (e.target.matches('[data-lang]')) {
+    // выбор языка
+    var langLink = e.target.closest('[data-lang]');
+    if (langLink) {
       e.preventDefault();
-      var l = e.target.getAttribute('data-lang');
+      var l = langLink.getAttribute('data-lang');
+      var sel = langLink.closest('.langsel');
+      if (sel) sel.classList.remove('open');
       if (l === 'ru') return;
-      alert(l === 'kg'
-        ? 'Кыргызча версия — 2-этапта кошулат (по ТЗ, этап 2).'
-        : 'English version is planned for stage 2 of the roadmap.');
+      var names = { kg: 'кыргызском', kz: 'казахском', uz: 'узбекском', tj: 'таджикском', tm: 'туркменском', en: 'английском' };
+      alert('Версия на ' + (names[l] || 'этом') + ' языке появится на следующем этапе (по ТЗ, этап 2). Сейчас доступен русский.');
+      return;
+    }
+    // кнопка переключателя языка
+    var langBtn = e.target.closest('.langsel-btn');
+    if (langBtn) {
+      e.preventDefault();
+      var box = langBtn.closest('.langsel');
+      var wasOpen = box.classList.contains('open');
+      document.querySelectorAll('.langsel.open').forEach(function (x) { x.classList.remove('open'); });
+      if (!wasOpen) box.classList.add('open');
+      return;
+    }
+    // клик вне — закрыть открытый переключатель
+    if (!e.target.closest('.langsel')) {
+      document.querySelectorAll('.langsel.open').forEach(function (x) { x.classList.remove('open'); });
     }
 
     // меню «Ещё»: открытие/закрытие по клику
