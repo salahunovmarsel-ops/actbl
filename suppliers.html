@@ -18,25 +18,48 @@
 
 <section><div class="container">
   <div class="grid g4" style="align-items:end;margin-bottom:24px">
-    <div class="field mb0"><label>Категория</label><select><option>Все категории</option><option>Одежда</option><option>Электроника</option><option>Товары для дома</option><option>Продукты</option><option>Косметика</option></select></div>
-    <div class="field mb0"><label>Страна производства</label><select><option>Любая</option><option>Кыргызстан</option><option>Китай</option><option>Турция</option><option>Казахстан</option></select></div>
-    <div class="field mb0"><label>Минимальный заказ</label><select><option>Любой</option><option>до 10 000 сом</option><option>до 50 000 сом</option><option>от 50 000 сом</option></select></div>
-    <div class="field mb0"><button class="btn btn-primary" style="width:100%">Найти</button></div>
+    <div class="field mb0"><label>Категория</label><select id="fCat"><option>Все категории</option><option>Одежда</option><option>Обувь</option><option>Электроника</option><option>Товары для дома</option><option>Продукты</option><option>Косметика</option></select></div>
+    <div class="field mb0"><label>Страна производства</label><select id="fCountry"><option>Любая</option><option>Кыргызстан</option><option>Китай</option><option>Турция</option><option>Корея</option></select></div>
+    <div class="field mb0"><label>Минимальный заказ</label><select id="fMin"><option>Любой</option><option>до 10 000 сом</option><option>до 50 000 сом</option><option>от 50 000 сом</option></select></div>
+    <div class="field mb0"><button class="btn btn-primary" id="fBtn" style="width:100%">Найти</button></div>
   </div>
 
-  <div class="grid g3">
-    <div class="card"><div class="ico">🧵</div><h3>Текстиль КР</h3><p class="muted">Одежда · Кыргызстан · мин. заказ 10 000 сом</p><div><span class="tag">Производитель</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
-    <div class="card"><div class="ico">📱</div><h3>Электроника (Китай)</h3><p class="muted">Гаджеты · Китай · мин. заказ 50 000 сом</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
-    <div class="card"><div class="ico">🏠</div><h3>Товары для дома</h3><p class="muted">Хозтовары · Турция</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
-    <div class="card"><div class="ico">💄</div><h3>Косметика</h3><p class="muted">Beauty · Китай / Корея</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
-    <div class="card"><div class="ico">🍯</div><h3>Продукты КР</h3><p class="muted">Мёд, сухофрукты · Кыргызстан</p><div><span class="tag">Экспорт</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
-    <div class="card"><div class="ico">👟</div><h3>Обувь</h3><p class="muted">Обувь · Китай / КР</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+  <div class="grid g3" id="supCards">
+    <div class="card" data-cat="Одежда" data-country="Кыргызстан"><div class="ico">🧵</div><h3>Текстиль КР</h3><p class="muted">Одежда · Кыргызстан · мин. заказ 10 000 сом</p><div><span class="tag">Производитель</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card" data-cat="Электроника" data-country="Китай"><div class="ico">📱</div><h3>Электроника (Китай)</h3><p class="muted">Гаджеты · Китай · мин. заказ 50 000 сом</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card" data-cat="Товары для дома" data-country="Турция"><div class="ico">🏠</div><h3>Товары для дома</h3><p class="muted">Хозтовары · Турция</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card" data-cat="Косметика" data-country="Китай Корея"><div class="ico">💄</div><h3>Косметика</h3><p class="muted">Beauty · Китай / Корея</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card" data-cat="Продукты" data-country="Кыргызстан"><div class="ico">🍯</div><h3>Продукты КР</h3><p class="muted">Мёд, сухофрукты · Кыргызстан</p><div><span class="tag">Экспорт</span></div><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
+    <div class="card" data-cat="Обувь" data-country="Китай Кыргызстан"><div class="ico">👟</div><h3>Обувь</h3><p class="muted">Обувь · Китай / КР</p><a href="#" class="btn btn-primary btn-sm" data-req>Отправить запрос</a></div>
   </div>
+
+  <div class="notice" id="supEmpty" style="margin-top:24px;display:none">По выбранным фильтрам ничего не найдено. Попробуйте изменить условия или оставьте <a href="#" data-req>заявку на подбор товара</a>.</div>
 
   <div class="notice" style="margin-top:28px">📦 Не нашли нужное? Оставьте <a href="#" data-req>заявку на подбор товара</a> или <a href="#" data-req>запрос на расчёт логистики</a> — партнёры Ассоциации помогут.</div>
 </div></section>
 
 <div id="footer"></div>
 <script src="js/main.js"></script>
+<script>
+(function () {
+  function apply() {
+    var cat = document.getElementById('fCat').value;
+    var country = document.getElementById('fCountry').value;
+    var shown = 0;
+    document.querySelectorAll('#supCards .card').forEach(function (c) {
+      var okCat = cat === 'Все категории' || c.getAttribute('data-cat') === cat;
+      var okCountry = country === 'Любая' || (c.getAttribute('data-country') || '').indexOf(country) !== -1;
+      var ok = okCat && okCountry;
+      c.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+    });
+    document.getElementById('supEmpty').style.display = shown ? 'none' : 'block';
+  }
+  document.getElementById('fBtn').addEventListener('click', apply);
+  ['fCat', 'fCountry'].forEach(function (id) {
+    document.getElementById(id).addEventListener('change', apply);
+  });
+})();
+</script>
 </body>
 </html>

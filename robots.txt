@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /cabinet.html
+Disallow: /partner.html
+Disallow: /admin.html
+Disallow: /admin-login.html
+Disallow: /partner-login.html
+
+Sitemap: https://actbl-green.vercel.app/sitemap.xml

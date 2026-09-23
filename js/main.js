@@ -2,6 +2,13 @@
 (function () {
   var page = document.body.getAttribute('data-page') || '';
 
+  // favicon (единый для всех страниц)
+  if (!document.querySelector('link[rel="icon"]')) {
+    var fav = document.createElement('link');
+    fav.rel = 'icon'; fav.type = 'image/svg+xml'; fav.href = 'favicon.svg';
+    document.head.appendChild(fav);
+  }
+
   var primary = [
     ['index.html', 'Главная'],
     ['about.html', 'Об Ассоциации'],
@@ -74,7 +81,7 @@
           '<a href="index.html" class="logo">' + logoSvg +
             '<span class="lg-col"><span class="lg-txt">ECOM <span>KG</span></span></span></a>' +
           '<p style="color:#7c8ba0;max-width:360px;margin-top:14px">Цифровая платформа электронной коммерции Кыргызстана. Создана ACTBL — Ассоциацией трансграничной электронной торговли и логистики Кыргызской Республики.</p>' +
-          '<div class="foot-socials"><a href="#" title="Telegram">TG</a><a href="#" title="Instagram">IG</a><a href="#" title="YouTube">YT</a><a href="#" title="LinkedIn">in</a></div>' +
+          '<div class="foot-socials"><a href="#" title="Telegram" data-soon>TG</a><a href="#" title="Instagram" data-soon>IG</a><a href="#" title="YouTube" data-soon>YT</a><a href="#" title="LinkedIn" data-soon>in</a></div>' +
         '</div>' +
         '<div><h4>Платформа</h4>' +
           '<a href="about.html">Об Ассоциации</a><a href="membership.html">Членство</a><a href="catalog.html">Каталог сервисов</a><a href="education.html">Обучение</a></div>' +
@@ -114,6 +121,19 @@
     if (e.target.matches('[data-req]')) {
       e.preventDefault();
       alert('Демо-режим: заявка отправлена партнёру. На рабочей версии заявка попадёт в CRM и личный кабинет партнёра.');
+    }
+    // соцсети (пока не заведены)
+    if (e.target.closest('[data-soon]')) {
+      e.preventDefault();
+      alert('Соцсети Ассоциации появятся позже. Скоро здесь будут Telegram, Instagram, YouTube и LinkedIn.');
+      return;
+    }
+    // меню кабинета: подсветка активного пункта (демо-навигация)
+    var dm = e.target.closest('.dash-menu a');
+    if (dm && !dm.getAttribute('href')) {
+      dm.parentElement.querySelectorAll('a').forEach(function (x) { x.classList.remove('active'); });
+      dm.classList.add('active');
+      return;
     }
     // выбор языка
     var langLink = e.target.closest('[data-lang]');
