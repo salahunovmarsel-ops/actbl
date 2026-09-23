@@ -47,7 +47,7 @@ header.site .container{max-width:1500px}
 .logo .lg-txt{font-weight:800;font-size:1.15rem;letter-spacing:.01em;line-height:1}
 .logo .lg-txt span{color:var(--blue)}
 .logo .lg-sub{display:block;font-size:.6rem;font-weight:500;letter-spacing:.02em;color:#9db0c9;margin-top:3px;text-transform:none}
-.nav-links{display:flex;gap:16px;margin-left:6px;flex-wrap:nowrap;white-space:nowrap}
+.nav-links{display:flex;gap:20px;flex:1;justify-content:center;flex-wrap:nowrap;white-space:nowrap}
 .nav-links a{color:#d7e0ee;font-size:.89rem;padding:6px 2px;font-weight:500}
 .nav-links a:hover{color:#fff}
 .nav-links a.active{color:#fff;font-weight:600;box-shadow:inset 0 -2px 0 var(--blue)}
