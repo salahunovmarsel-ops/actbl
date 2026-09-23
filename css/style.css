@@ -246,6 +246,29 @@ footer.site a:hover{color:#fff}
 .rolecard p{margin:0;font-size:.86rem;color:var(--muted)}
 .rolecard .arr{color:var(--blue);font-size:1.3rem;flex:none}
 
+/* ---------- Auth (вход) ---------- */
+.auth{padding:0}
+.auth-wrap{display:grid;grid-template-columns:1.05fr .95fr;min-height:calc(100vh - 72px)}
+.auth-side{position:relative;color:#fff;padding:60px 52px;display:flex;flex-direction:column;justify-content:center;background:var(--navy);overflow:hidden}
+.auth-side .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.auth-side .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(9,22,42,.93),rgba(11,29,54,.78))}
+.auth-side .content{position:relative;z-index:1;max-width:440px}
+.auth-side .logo{margin-bottom:28px}
+.auth-side h2{color:#fff;font-size:1.9rem}
+.auth-side p{color:#cdd8ea}
+.auth-side .checks li{color:#dbe6f5}
+.auth-side .checks li:before{background:rgba(47,111,237,.25);box-shadow:inset 0 0 0 2px #7fa2e6}
+.auth-form{display:flex;align-items:center;justify-content:center;padding:56px 40px;background:var(--bg)}
+.auth-form .box{width:100%;max-width:420px}
+.auth-form h1{font-size:1.7rem}
+.auth-form .sub{color:var(--muted);margin-top:-4px}
+.segmented{display:flex;background:var(--alt);border:1px solid var(--border);border-radius:12px;padding:5px;gap:4px;margin:22px 0 16px}
+.segmented button{flex:1;padding:10px 6px;border:0;background:transparent;border-radius:9px;font-weight:600;font-size:.86rem;color:var(--muted);cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:5px;transition:.15s}
+.segmented button .si{font-size:1.15rem}
+.segmented button:hover{color:var(--navy)}
+.segmented button.active{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
+.role-hint{background:var(--blue-soft);border-radius:10px;padding:12px 14px;font-size:.88rem;color:#274a86;margin-bottom:20px}
+
 /* ---------- Responsive ---------- */
 @media(max-width:1360px){ .logo .lg-sub{display:none} }
 @media(max-width:1200px){
@@ -268,6 +291,11 @@ footer.site a:hover{color:#fff}
   .foot-grid{grid-template-columns:1fr 1fr}
   .head-split{grid-template-columns:1fr;gap:14px}
   .head-split .r{justify-content:flex-start}
+}
+@media(max-width:860px){
+  .auth-wrap{grid-template-columns:1fr}
+  .auth-side{min-height:auto;padding:44px 28px}
+  .auth-form{padding:40px 24px}
 }
 @media(max-width:720px){
   section{padding:52px 0}
