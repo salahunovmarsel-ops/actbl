@@ -17,6 +17,12 @@
 </div></section>
 
 <section><div class="container">
+  <div id="realPartnersWrap" style="display:none;margin-bottom:34px">
+    <h2 class="mb0" style="margin-bottom:16px">Партнёры платформы</h2>
+    <p class="muted" style="margin-bottom:16px">Проверенные компании. Нажмите «Написать компании» — заявка уйдёт именно ей, и откроется чат.</p>
+    <div class="grid g3" id="realPartners"></div>
+  </div>
+  <h2 class="mb0" style="margin-bottom:16px">Категории услуг</h2>
   <div class="pill-row" id="filters" style="margin-bottom:24px">
     <button class="btn btn-primary btn-sm" data-f="all">Все</button>
     <button class="btn btn-outline btn-sm" data-f="marketplace">Маркетплейсы</button>
@@ -65,6 +71,14 @@ document.getElementById('filters').addEventListener('click',function(e){
     c.style.display=(f==='all'||c.getAttribute('data-cat')===f)?'':'none';
   });
 });
+</script>
+<script src="js/chat.js"></script>
+<script>
+(function () {
+  var wrap = document.getElementById('realPartnersWrap');
+  wrap.style.display = '';
+  ecomChat.loadCatalog(document.getElementById('realPartners'), function () { wrap.style.display = 'none'; });
+})();
 </script>
 </body>
 </html>

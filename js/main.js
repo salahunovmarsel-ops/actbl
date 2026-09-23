@@ -132,6 +132,7 @@
     c.onload = afterCfg; c.onerror = afterCfg; document.head.appendChild(c);
   }
   window.ecomDB = {
+    client: function (cb) { getSB(cb); },
     save: function (type, data) {
       return new Promise(function (resolve) {
         getSB(function (sb) {

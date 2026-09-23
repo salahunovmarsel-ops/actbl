@@ -42,23 +42,15 @@
 
       <div class="card" style="margin-bottom:20px">
         <h3>📨 Заявки от селлеров</h3>
-        <table><thead><tr><th>Селлер</th><th>Услуга</th><th>Дата</th><th>Статус</th><th></th></tr></thead>
-        <tbody>
-          <tr><td>Азамат К.</td><td>Логистика</td><td>21.09</td><td><span class="status st-new">Новая</span></td><td><a href="#" class="btn btn-outline btn-sm" data-req>Ответить</a></td></tr>
-          <tr><td>Нургуль Т.</td><td>Фулфилмент</td><td>20.09</td><td><span class="status st-wait">В работе</span></td><td><a href="#" class="btn btn-outline btn-sm" data-req>Ответить</a></td></tr>
-          <tr><td>Бакыт М.</td><td>Расчёт доставки</td><td>19.09</td><td><span class="status st-ok">Закрыта</span></td><td></td></tr>
-        </tbody></table>
+        <p class="muted" style="font-size:.85rem">Заявки клиентов, выбравших вашу компанию. Нажмите «Ответить», чтобы открыть чат.</p>
+        <div id="partnerReqs"><p class="muted">Загрузка…</p></div>
       </div>
 
       <div class="grid g2">
         <div class="card">
-          <h3>🛠️ Добавить предложение</h3>
-          <form data-demo>
-            <div class="field"><label>Название услуги</label><input type="text" required></div>
-            <div class="field"><label>Условия для членов Ассоциации</label><input type="text" placeholder="напр. скидка 10%"></div>
-            <div class="field"><label>Описание</label><textarea rows="3"></textarea></div>
-            <button class="btn btn-primary" type="submit">Опубликовать</button>
-          </form>
+          <h3>🏢 Мои компании</h3>
+          <p class="muted" style="font-size:.85rem">Добавьте компанию — после одобрения администратором она появится в каталоге, и клиенты смогут вам писать.</p>
+          <div id="myPartners"><p class="muted">Загрузка…</p></div>
         </div>
         <div class="card">
           <h3>📈 Статистика</h3>
@@ -77,5 +69,10 @@
 
 <div id="footer"></div>
 <script src="js/main.js"></script>
+<script src="js/chat.js"></script>
+<script>
+  ecomChat.partnerRequests(document.getElementById('partnerReqs'));
+  ecomChat.myPartners(document.getElementById('myPartners'));
+</script>
 </body>
 </html>
