@@ -277,4 +277,50 @@
       drop.classList.remove('open');
     }
   });
+
+  // ---- AI-помощник (виджет) ----
+  (function () {
+    var launch = document.createElement('button');
+    launch.className = 'ai-launch'; launch.type = 'button'; launch.title = 'AI-помощник'; launch.textContent = '💬';
+    var panel = document.createElement('div');
+    panel.className = 'ai-panel';
+    panel.innerHTML =
+      '<div class="ai-head"><span><b>AI-помощник ECOM KG</b><span class="ai-sub">Спросите про платформу и e-commerce</span></span><button class="ai-x" aria-label="Закрыть">×</button></div>' +
+      '<div class="ai-body" id="aiBody"></div>' +
+      '<form class="ai-foot" id="aiForm"><input id="aiInput" placeholder="Ваш вопрос…" autocomplete="off" required><button class="btn btn-primary" type="submit">▶</button></form>';
+    document.body.appendChild(launch); document.body.appendChild(panel);
+
+    var body = panel.querySelector('#aiBody');
+    var history = [];
+    var greeted = false;
+    function esc(s) { return (s == null ? '' : s).toString().replace(/[<>&]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]; }); }
+    function bubble(role, text) {
+      var d = document.createElement('div'); d.className = 'bubble ' + (role === 'user' ? 'me' : 'them');
+      d.innerHTML = esc(text); body.appendChild(d); body.scrollTop = body.scrollHeight; return d;
+    }
+    function open() {
+      panel.classList.add('open');
+      if (!greeted) { greeted = true; bubble('assistant', 'Здравствуйте! Я AI-помощник ECOM KG. Спросите про членство, каталог партнёров, логистику, маркетплейсы или обучение 🙂'); }
+      panel.querySelector('#aiInput').focus();
+    }
+    launch.addEventListener('click', function () { panel.classList.contains('open') ? panel.classList.remove('open') : open(); });
+    panel.querySelector('.ai-x').addEventListener('click', function () { panel.classList.remove('open'); });
+    panel.querySelector('#aiForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var inp = panel.querySelector('#aiInput'); var q = inp.value.trim(); if (!q) return;
+      inp.value = ''; bubble('user', q); history.push({ role: 'user', content: q });
+      var typing = document.createElement('div'); typing.className = 'ai-typing'; typing.textContent = 'печатает…'; body.appendChild(typing); body.scrollTop = body.scrollHeight;
+      fetch('/api/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ messages: history }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          typing.remove();
+          var reply = (d && d.reply) || 'Извините, не удалось получить ответ.';
+          bubble('assistant', reply); history.push({ role: 'assistant', content: reply });
+        })
+        .catch(function () {
+          typing.remove();
+          bubble('assistant', 'Помощник доступен на опубликованном сайте после подключения ключа. Локально он не отвечает.');
+        });
+    });
+  })();
 })();
